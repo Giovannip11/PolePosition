@@ -31,3 +31,33 @@ git clone https://github.com/seu-usuario/poleposition.git
 
 2. Acesse a pasta do projeto: cd poleposition
 3. Rode a aplicação:dotnet run
+# Estrutura do Projeto PolePosition
+
+Este documento descreve a organização dos arquivos e pastas do projeto **PolePosition**, facilitando a compreensão de onde cada recurso está localizado.
+
+---
+
+## Estrutura de Pastas
+
+- **Pages/**  
+  Contém todas as páginas Blazor do projeto. Cada arquivo `.razor` representa uma página da aplicação.
+
+- **Components/**  
+  Componentes reutilizáveis que podem ser usados em várias páginas. Ex.: tabelas de ranking, filtros, gráficos.
+
+- **wwwroot/**  
+  Arquivos estáticos acessíveis pelo navegador:  
+  - **css/**: estilos da aplicação  
+  - **images/**: imagens, logos e ícones  
+  - **js/**: scripts JavaScript, se necessário
+
+- **Data/**  
+  Armazena os dados em **JSON** ou outros formatos que a aplicação consome, como informações dos pilotos.
+
+- **Program.cs**  
+  Arquivo principal de configuração da aplicação Blazor Server. Configura serviços, rotas e dependências.
+
+- **App.razor**  
+  Componente raiz que define o roteamento da aplicação.
+
+- **_Imports.razo_**
