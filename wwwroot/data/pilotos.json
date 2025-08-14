@@ -1,0 +1,82 @@
+[
+  {
+    "Nome": "Lewis Hamilton",
+    "MelhorVolta": "1:21.45",
+    "Categoria": "Fórmula 1",
+    "Sexo": "Masculino",
+    "Peso": 73,
+    "Pista": "Interlagos"
+  },
+  {
+    "Nome": "Max Verstappen",
+    "MelhorVolta": "1:20.88",
+    "Categoria": "Fórmula 1",
+    "Sexo": "Masculino",
+    "Peso": 72,
+    "Pista": "Circuit of the Americas"
+  },
+  {
+    "Nome": "Marc Márquez",
+    "MelhorVolta": "1:32.15",
+    "Categoria": "MotoGP",
+    "Sexo": "Masculino",
+    "Peso": 65,
+    "Pista": "Sachsenring"
+  },
+  {
+    "Nome": "Valentino Rossi",
+    "MelhorVolta": "1:31.98",
+    "Categoria": "MotoGP",
+    "Sexo": "Masculino",
+    "Peso": 69,
+    "Pista": "Mugello"
+  },
+  {
+    "Nome": "Sebastien Loeb",
+    "MelhorVolta": "2:15.34",
+    "Categoria": "Rali",
+    "Sexo": "Masculino",
+    "Peso": 74,
+    "Pista": "Rally de Monte Carlo"
+  },
+  {
+    "Nome": "Ken Block",
+    "MelhorVolta": "2:16.22",
+    "Categoria": "Rali",
+    "Sexo": "Masculino",
+    "Peso": 75,
+    "Pista": "Pikes Peak"
+  },
+  {
+    "Nome": "Scott Dixon",
+    "MelhorVolta": "1:09.87",
+    "Categoria": "IndyCar",
+    "Sexo": "Masculino",
+    "Peso": 70,
+    "Pista": "Indianapolis Motor Speedway"
+  },
+  {
+    "Nome": "Helio Castroneves",
+    "MelhorVolta": "1:10.12",
+    "Categoria": "IndyCar",
+    "Sexo": "Masculino",
+    "Peso": 67,
+    "Pista": "Streets of Long Beach"
+  },
+  {
+    "Nome": "Tom Kristensen",
+    "MelhorVolta": "3:45.76",
+    "Categoria": "Endurance",
+    "Sexo": "Masculino",
+    "Peso": 71,
+    "Pista": "Circuit de la Sarthe"
+  },
+  {
+    "Nome": "Fernando Alonso",
+    "MelhorVolta": "3:44.50",
+    "Categoria": "Endurance",
+    "Sexo": "Masculino",
+    "Peso": 68,
+    "Pista": "Spa-Francorchamps"
+  }
+]

@@ -1,0 +1,181 @@
+@page "/classificacao"
+@using System.Net.Http.Json
+@inject HttpClient Http
+
+<h2>Classificação</h2>
+
+<div class="filtros-container">
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" @onchange="OnCategoriaChanged">
+        <option value="">Todas</option>
+        @foreach (var categoria in categoriasUnicas)
+        {
+            <option value="@categoria">@categoria</option>
+        }
+    </select>
+
+    <label for="sexo">Sexo:</label>
+    <select id="sexo" @onchange="OnSexoChanged">
+        <option value="">Todos</option>
+        @foreach (var sexo in sexosUnicos)
+        {
+            <option value="@sexo">@sexo</option>
+        }
+    </select>
+
+    <label for="pista">Pista:</label>
+    <select id="pista" @onchange="OnPistaChanged">
+        <option value="">Todas</option>
+        @foreach (var pista in pistasUnicas)
+        {
+            <option value="@pista">@pista</option>
+        }
+    </select>
+
+    <label for="peso">Peso (máx):</label>
+    <input id="peso" type="number" @bind="FiltroPesoMaximo" />
+</div>
+
+<ul class="lista-pilotos">
+    @if (pilotosFiltrados is not null && pilotosFiltrados.Any())
+    {
+        @foreach (var p in pilotosFiltrados)
+        {
+            <li>
+                <span class="nome">@p.Nome</span>
+                <span class="tempo">@p.MelhorVolta</span>
+                <span class="categoria">(@p.Categoria)</span>
+            </li>
+        }
+    }
+    else
+    {
+        <li>Nenhum piloto encontrado com os filtros aplicados.</li>
+    }
+</ul>
+
+@code {
+    private List<Piloto> pilotos = new();
+    private List<Piloto> pilotosFiltrados = new();
+
+    private HashSet<string> categoriasUnicas = new();
+    private HashSet<string> sexosUnicos = new();
+    private HashSet<string> pistasUnicas = new();
+
+    // Campos para filtros
+    private string filtroCategoria = string.Empty;
+    private string filtroSexo = string.Empty;
+    private string filtroPista = string.Empty;
+    private int? filtroPesoMaximo;
+
+    private int? FiltroPesoMaximo
+    {
+        get => filtroPesoMaximo;
+        set
+        {
+            filtroPesoMaximo = value;
+            AplicarFiltros();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var lista = await Http.GetFromJsonAsync<List<Piloto>>("data/pilotos.json");
+
+            if (lista != null)
+            {
+                pilotos = lista
+                    .OrderBy(p => TempoParaMilissegundos(p.MelhorVolta ?? string.Empty))
+                    .ToList();
+
+                categoriasUnicas = pilotos
+                    .Where(p => !string.IsNullOrWhiteSpace(p.Categoria))
+                    .Select(p => p.Categoria.Trim())
+                    .ToHashSet();
+
+                sexosUnicos = pilotos
+                    .Where(p => !string.IsNullOrWhiteSpace(p.Sexo))
+                    .Select(p => p.Sexo.Trim())
+                    .ToHashSet();
+
+                pistasUnicas = pilotos
+                    .Where(p => !string.IsNullOrWhiteSpace(p.Pista))
+                    .Select(p => p.Pista.Trim())
+                    .ToHashSet();
+
+                AplicarFiltros(); // Filtro inicial para mostrar todos
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Erro ao carregar pilotos: " + ex.Message);
+        }
+    }
+
+    private int TempoParaMilissegundos(string tempo)
+    {
+        if (string.IsNullOrWhiteSpace(tempo)) return int.MaxValue;
+
+        var partes = tempo.Split(':', '.');
+        if (partes.Length != 3) return int.MaxValue;
+
+        if (!int.TryParse(partes[0], out int minutos)) return int.MaxValue;
+        if (!int.TryParse(partes[1], out int segundos)) return int.MaxValue;
+        if (!int.TryParse(partes[2].PadRight(3, '0'), out int milissegundos)) return int.MaxValue;
+
+        return (minutos * 60 * 1000) + (segundos * 1000) + milissegundos;
+    }
+
+    private void AplicarFiltros()
+    {
+        if (pilotos is null || !pilotos.Any())
+            return;
+
+        IEnumerable<Piloto> query = pilotos;
+
+        if (!string.IsNullOrWhiteSpace(filtroCategoria))
+            query = query.Where(p => p.Categoria?.Trim().Equals(filtroCategoria.Trim(), StringComparison.OrdinalIgnoreCase) ?? false);
+
+        if (!string.IsNullOrWhiteSpace(filtroSexo))
+            query = query.Where(p => p.Sexo?.Trim().Equals(filtroSexo.Trim(), StringComparison.OrdinalIgnoreCase) ?? false);
+
+        if (!string.IsNullOrWhiteSpace(filtroPista))
+            query = query.Where(p => p.Pista?.Trim().Equals(filtroPista.Trim(), StringComparison.OrdinalIgnoreCase) ?? false);
+
+        if (filtroPesoMaximo.HasValue)
+            query = query.Where(p => p.Peso <= filtroPesoMaximo.Value);
+
+        pilotosFiltrados = query.ToList();
+        StateHasChanged();
+    }
+
+    private void OnCategoriaChanged(ChangeEventArgs e)
+    {
+        filtroCategoria = e.Value?.ToString() ?? string.Empty;
+        AplicarFiltros();
+    }
+
+    private void OnSexoChanged(ChangeEventArgs e)
+    {
+        filtroSexo = e.Value?.ToString() ?? string.Empty;
+        AplicarFiltros();
+    }
+
+    private void OnPistaChanged(ChangeEventArgs e)
+    {
+        filtroPista = e.Value?.ToString() ?? string.Empty;
+        AplicarFiltros();
+    }
+
+    public class Piloto
+    {
+        public string Nome { get; set; } = string.Empty;
+        public string Categoria { get; set; } = string.Empty;
+        public string Sexo { get; set; } = string.Empty;
+        public string Pista { get; set; } = string.Empty;
+        public int Peso { get; set; }
+        public string MelhorVolta { get; set; } = string.Empty;
+    }
+}

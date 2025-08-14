@@ -1,0 +1,44 @@
+/* Sidebar fixa */
+.sidebar {
+    background-color: #000; /* preto sólido */
+    padding: 1rem;
+    height: 100px;
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+}
+
+/* Estilo da lista */
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem; /* espaçamento entre os itens */
+    color: white; /* texto branco */    
+}
+
+/* Itens da lista */
+.sidebar nav ul li {
+    margin-bottom: 0; /* remove espaçamento vertical pois está em linha */
+}
+
+/* Links padrão e ativo */
+.sidebar nav ul li .nav-link,
+.sidebar nav ul li .nav-link.active {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white !important; /* força texto branco */
+    text-decoration: none !important;
+    border-radius: 4px;
+    background-color: transparent !important;
+    transition: background-color 0.2s ease;
+    text-align: center;
+}
+
+
+/* Conteúdo principal */
+main {
+    padding: 1rem;
+}
+

@@ -1,0 +1,203 @@
+
+
+/* Barra de pesquisa */
+.classificacao-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    width: auto; /* ou width: 100%; */
+}
+
+.classificacao-container input {
+    padding: 0.5rem;
+    width: 1000px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Lista de pilotos */
+.pilotos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 300px;
+}
+
+.pilotos-lista li {
+    background: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pilotos-lista li:hover {
+    background: #ddd;
+}
+
+/* Overlay do card */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card de detalhes */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #333;
+}
+.voltas-rapidas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.volta-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    min-width: 180px;
+    text-align: center;
+}
+.filtro-btn {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    background:gray;
+    color: black;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.filtro-btn:hover {
+    background: #b71c1c;
+}
+
+.filtros {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filtros select {
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.grupo-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    width: 320px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.grupo-card h3 {
+    margin-top: 0;
+    color: #b71c1c;
+    text-align: center;
+}
+.piloto-nome {
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1.1rem;
+    background: #ffeaea;
+    padding: 2px 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(211,47,47,0.08);
+    margin-right: 6px;
+}
+.lista-pilotos {
+    list-style: none; /* remove os pontos */
+    padding: 0;
+    margin: 0;
+}
+
+.lista-pilotos li {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd; /* linha separadora opcional */
+}
+
+.lista-pilotos li span.tempo {
+    color: #777; /* cor diferente pro tempo */
+    font-weight: normal;
+    margin-left: 8px;
+}
+.lista-pilotos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-pilotos li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.lista-pilotos li:last-child {
+    border-bottom: none;
+}
+
+.nome {
+    font-weight: bold;
+    color: #222;
+}
+
+.tempo {
+    color: #666;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.categoria {
+    font-size: 12px;
+    color: #999;
+    margin-left: auto;
+}
