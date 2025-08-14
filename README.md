@@ -28,4 +28,5 @@ Antes de rodar a aplicação, certifique-se de ter instalado:
 
 **Clone o repositório** (ou baixe os arquivos):
 git clone https://github.com/seu-usuario/poleposition.git
+Após isso abre o terminal ou o PowerShell e vá ate os repositório usando o comando 'cd'.
 
