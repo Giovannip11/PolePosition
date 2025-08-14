@@ -24,5 +24,8 @@ Antes de rodar a aplicação, certifique-se de ter instalado:
 
 ---
 
-## Estrutura do Projeto
+## Como rodar a aplicação localmente
+
+**Clone o repositório** (ou baixe os arquivos):
+git clone https://github.com/seu-usuario/poleposition.git
 
