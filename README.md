@@ -28,11 +28,7 @@ Antes de rodar a aplicação, certifique-se de ter instalado:
 
 1. **Clone o repositório** (ou baixe os arquivos):
 
+```bash
 git clone https://github.com/seu-usuario/poleposition.git
 
-
-2. **Acesse a pasta do projeto:
-cd poleposition
-3. **Rode a aplicação:
-dotnet run
-
+2. Acesse a pasta do projeto
