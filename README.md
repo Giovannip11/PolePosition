@@ -27,8 +27,7 @@ Antes de rodar a aplicação, certifique-se de ter instalado:
 ## Como rodar a aplicação localmente
 
 1. **Clone o repositório** (ou baixe os arquivos):
-
-```bash
 git clone https://github.com/seu-usuario/poleposition.git
 
 2. Acesse a pasta do projeto
+
